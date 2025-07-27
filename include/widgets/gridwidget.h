@@ -50,6 +50,7 @@ private:
     void setupGraphicsUI();
     void setupGraphicsConnections();
     void setupContextMenu();
+    void showGraphicsStyleDialog();
     void addCircle(const QPointF &center, qreal radius, const QColor &color = Qt::blue);
     void addRectangle(const QRectF &rect, const QColor &color = Qt::red);
     void addLine(const QPointF &start, const QPointF &end, const QColor &color = Qt::black);
@@ -66,6 +67,10 @@ private:
     bool m_isDragging;        // 是否正在拖拽
     QPoint m_lastMousePos;    // 上次鼠标位置
     QPoint m_dragStartPos;    // 拖拽开始位置
+    
+    // 图形拖拽
+    bool m_isDraggingGraphics; // 是否正在拖拽图形
+    QPointF m_lastGraphicsPos; // 上次图形拖拽位置
     
     // 颜色
     QColor m_backgroundColor; // 背景色
