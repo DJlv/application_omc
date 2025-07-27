@@ -31,9 +31,9 @@ void AppController::setupUI()
     }
 
     // 设置窗口标题
-    m_mainWindow->setWindowTitle("Application OMC - 网格页面");
+    m_mainWindow->setWindowTitle("Application OMC - 网格图形显示");
     
-    // 创建网格组件
+    // 创建网格组件（已集成图形显示功能）
     m_gridWidget = new GridWidget(m_mainWindow);
     
     // 设置中央组件

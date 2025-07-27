@@ -16,7 +16,7 @@ public:
     // 初始化应用程序
     void initialize();
     
-    // 获取网格组件
+    // 获取组件
     GridWidget* getGridWidget() const { return m_gridWidget; }
 
 private slots:

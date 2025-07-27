@@ -4,7 +4,25 @@
 #include <QWidget>
 #include <QPainter>
 #include <QMouseEvent>
+#include <QKeyEvent>
 #include <QTimer>
+
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsItem>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsRectItem>
+#include <QGraphicsLineItem>
+#include <QGraphicsTextItem>
+#include <QGraphicsPolygonItem>
+#include <QMenu>
+#include <QAction>
+#include <QContextMenuEvent>
+#include <QInputDialog>
+#include <QMessageBox>
 
 class GridWidget : public QWidget
 {
@@ -20,10 +38,23 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+    void contextMenuEvent(QContextMenuEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
+    bool eventFilter(QObject *obj, QEvent *event) override;
+
+private slots:
 
 private:
     void drawGrid(QPainter &painter);
     void updateGrid();
+    void setupGraphicsUI();
+    void setupGraphicsConnections();
+    void setupContextMenu();
+    void addCircle(const QPointF &center, qreal radius, const QColor &color = Qt::blue);
+    void addRectangle(const QRectF &rect, const QColor &color = Qt::red);
+    void addLine(const QPointF &start, const QPointF &end, const QColor &color = Qt::black);
+    void addText(const QPointF &pos, const QString &text, const QColor &color = Qt::black);
+    void addPolygon(const QPolygonF &polygon, const QColor &color = Qt::green);
 
 private:
     // 网格参数
@@ -39,6 +70,29 @@ private:
     // 颜色
     QColor m_backgroundColor; // 背景色
     QColor m_gridColor;       // 网格线颜色
+    
+    // 图形显示组件
+    QGraphicsView *m_graphicsView;
+    QGraphicsScene *m_graphicsScene;
+    
+    // 右键菜单
+    QMenu *m_contextMenu;
+    QAction *m_addCircleAction;
+    QAction *m_addRectAction;
+    QAction *m_addLineAction;
+    QAction *m_addTextAction;
+    QAction *m_addPolygonAction;
+    QAction *m_removeAction;
+    QAction *m_clearAction;
+    
+    
+    qreal m_zoomFactor;
+    
+    // 状态
+    bool m_isAddingItem;
+    QString m_currentAddMode;
+    QPointF m_startPoint;
+    QPointF m_endPoint;
 
 public slots:
     // 设置方法
