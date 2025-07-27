@@ -31,8 +31,6 @@ private:
     int m_gridOffsetX;        // 网格X偏移
     int m_gridOffsetY;        // 网格Y偏移
     
-
-    
     // 鼠标交互
     bool m_isDragging;        // 是否正在拖拽
     QPoint m_lastMousePos;    // 上次鼠标位置
@@ -41,6 +39,19 @@ private:
     // 颜色
     QColor m_backgroundColor; // 背景色
     QColor m_gridColor;       // 网格线颜色
+
+public slots:
+    // 设置方法
+    void setGridSize(int size);
+    void setGridOffset(int offsetX, int offsetY);
+    void setGridColor(const QColor &color);
+    void setBackgroundColor(const QColor &color);
+    
+    // 获取方法
+    int getGridSize() const { return m_gridSize; }
+    QPoint getGridOffset() const { return QPoint(m_gridOffsetX, m_gridOffsetY); }
+    QColor getGridColor() const { return m_gridColor; }
+    QColor getBackgroundColor() const { return m_backgroundColor; }
 };
 
 #endif // GRIDWIDGET_H 

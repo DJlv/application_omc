@@ -1,4 +1,4 @@
-#include "gridwidget.h"
+#include "widgets/gridwidget.h"
 #include <QPainter>
 #include <QMouseEvent>
 #include <QApplication>
@@ -9,8 +9,8 @@ GridWidget::GridWidget(QWidget *parent)
     , m_gridOffsetX(0)
     , m_gridOffsetY(0)
     , m_isDragging(false)
-    , m_backgroundColor(30, 30, 30)    // 深灰色背景
-    , m_gridColor(80, 80, 80)          // 浅灰色网格线
+    , m_backgroundColor(20, 20, 20)    // 深灰色背景
+    , m_gridColor(48, 48, 48)          // 浅灰色网格线
 {
     setMouseTracking(true);
     setFocusPolicy(Qt::StrongFocus);
@@ -59,8 +59,6 @@ void GridWidget::drawGrid(QPainter &painter)
     }
 }
 
-
-
 void GridWidget::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::RightButton) {
@@ -102,4 +100,38 @@ void GridWidget::resizeEvent(QResizeEvent *event)
 void GridWidget::updateGrid()
 {
     update();
+}
+
+// 设置方法实现
+void GridWidget::setGridSize(int size)
+{
+    if (size > 0 && size != m_gridSize) {
+        m_gridSize = size;
+        update();
+    }
+}
+
+void GridWidget::setGridOffset(int offsetX, int offsetY)
+{
+    if (m_gridOffsetX != offsetX || m_gridOffsetY != offsetY) {
+        m_gridOffsetX = offsetX;
+        m_gridOffsetY = offsetY;
+        update();
+    }
+}
+
+void GridWidget::setGridColor(const QColor &color)
+{
+    if (m_gridColor != color) {
+        m_gridColor = color;
+        update();
+    }
+}
+
+void GridWidget::setBackgroundColor(const QColor &color)
+{
+    if (m_backgroundColor != color) {
+        m_backgroundColor = color;
+        update();
+    }
 } 

@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "gridwidget.h"
+#include "controllers/appcontroller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,8 +18,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 private:
     Ui::MainWindow *ui;
-    GridWidget *m_gridWidget;
+    AppController *m_appController;
 };
 #endif // MAINWINDOW_H
