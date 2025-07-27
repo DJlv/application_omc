@@ -1,0 +1,50 @@
+# 构建目录
+build/
+Debug/
+Release/
+x64/
+x86/
+
+# CMake生成的文件
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Qt生成的文件
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+*.qm
+
+# 编译输出
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+
+# IDE文件
+.vscode/
+.idea/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.user
+
+# 临时文件
+*.tmp
+*.temp
+*~
+
+# 日志文件
+*.log
+
+# 系统文件
+.DS_Store
+Thumbs.db 
